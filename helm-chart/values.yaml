@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: satovar/helm-microservice
+  tag: "1.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 8000
+
+containerPort: 8000

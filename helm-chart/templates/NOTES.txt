@@ -1,0 +1,32 @@
+The deployment of `{{ .Chart.Name }}` has been successfully completed with the following configurations:
+- Number of replicas: {{ .Values.replicaCount }}
+- Container image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+- Container exposed port: {{ .Values.containerPort }}
+
+
+The service `{{ .Release.Name }}-service` is configured as `{{ .Values.service.type }}` and exposes port {{ .Values.service.port }}.
+
+Depending on the environment, you can access your application as follows:
+
+- **If the service type is LoadBalancer**: Once Kubernetes assigns an external IP, you can access your application at the following URL:
+
+  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ .Release.Name }}-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo http://$SERVICE_IP:{{ .Values.service.port }}
+
+If the IP is not immediately available, you can check the status of the service by running:
+
+kubectl get svc --namespace {{ .Release.Namespace }} -w {{ .Release.Name }}-service
+If the service type is NodePort: You can access your application on any Kubernetes node at the assigned port:
+
+NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ .Release.Name }}-service)
+NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+echo http://$NODE_IP:$NODE_PORT
+
+3. Deployment Verification
+To ensure everything is working correctly, you can check the pod logs with the following command:
+
+kubectl logs -l app={{ .Chart.Name }} --namespace {{ .Release.Namespace }}
+You can also verify the deployment status with:
+
+kubectl get pods --namespace {{ .Release.Namespace }} -l app={{ .Chart.Name }}
+Your {{ .Chart.Name }} microservice is now deployed and ready to receive traffic!
