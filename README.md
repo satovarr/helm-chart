@@ -7,7 +7,7 @@ helm lint helm-chart
 
 mv helm-chart-x.x.x.tgz ./docs
 
-helm repo index docs --url https://raw.githubusercontent.com/username/repo/master/docs TODO change
+helm repo index docs --url https://satovarr.github.io/helm-chart/
 
 git add .
 

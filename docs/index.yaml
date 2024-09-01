@@ -3,12 +3,12 @@ entries:
   helm-chart:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-09-01T17:55:52.363789-05:00"
+    created: "2024-09-01T18:41:04.467849-05:00"
     description: A Helm chart for Kubernetes
     digest: ecac8591f97ccf422186cb9512875bc00a1140b8a9bf7b25f342fbedbe318482
     name: helm-chart
     type: application
     urls:
-    - docs/helm-chart-0.1.0.tgz
+    - https://satovarr.github.io/helm-chart/helm-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-01T17:55:52.363527-05:00"
+generated: "2024-09-01T18:41:04.466894-05:00"
