@@ -15,3 +15,11 @@ git commit -m "update chart"
 
 git push origin master
 ```
+
+
+## Pull and Update Chart
+```bash
+helm repo add helm-chart https://satovarr.github.io/helm-chart/
+helm repo update
+helm repo list
+```
