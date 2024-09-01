@@ -1,12 +1,9 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Release.Name }}-service
-spec:
-  type: {{ .Values.service.type }}
-  selector:
-    app: {{ .Chart.Name }}
-  ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.containerPort }}
+<html>
+  <head>
+    <title>Chart repo</title>
+  </head>
+  <body>
+    <h1>Charts Repo</h1>
+    <p>Point Helm at this repo to see charts.</p>
+  </body>
+</html>
