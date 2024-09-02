@@ -23,3 +23,9 @@ helm repo add helm-chart https://satovarr.github.io/helm-chart/
 helm repo update
 helm repo list
 ```
+
+
+## Add to Argo
+```bash
+argocd app create helm-microservice --repo https://satovarr.github.io/helm-chart/ --helm-chart helm-chart --revision 0.1.0 --dest-namespace default --dest-server https://kubernetes.default.svc --sync-policy auto
+```
